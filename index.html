@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Standup Tracker</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>🗓️ Daily Standup Tracker</h1>
+      <p class="sub">Capture yesterday, plan today, flag blockers — fast.</p>
+    </header>
+
+    <section class="meta">
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" type="text" placeholder="Your name (e.g., Sam)"/>
+      </div>
+      <div class="field">
+        <label for="date">Date</label>
+        <input id="date" type="date"/>
+      </div>
+      <div class="field theme-toggle">
+        <label>Theme</label>
+        <button id="toggleTheme" class="ghost">Light/Dark</button>
+      </div>
+    </section>
+
+    <section class="grid">
+      <!-- Yesterday -->
+      <div class="card">
+        <h2>✅ Yesterday</h2>
+        <div class="adder">
+          <input id="yesterdayInput" type="text" placeholder="What did you complete yesterday?" />
+          <select id="yesterdayPriority">
+            <option value="Low">🟢 Low</option>
+            <option value="Medium" selected>🟠 Medium</option>
+            <option value="High">🔴 High</option>
+          </select>
+          <button class="primary" id="addYesterday">Add</button>
+        </div>
+        <ul id="yesterdayList" class="list"></ul>
+      </div>
+
+      <!-- Today -->
+      <div class="card">
+        <h2>🎯 Today</h2>
+        <div class="adder">
+          <input id="todayInput" type="text" placeholder="What will you do today?" />
+          <select id="todayPriority">
+            <option value="Low">🟢 Low</option>
+            <option value="Medium" selected>🟠 Medium</option>
+            <option value="High">🔴 High</option>
+          </select>
+          <button class="primary" id="addToday">Add</button>
+        </div>
+        <ul id="todayList" class="list"></ul>
+      </div>
+
+      <!-- Blockers -->
+      <div class="card">
+        <h2>🚧 Blockers</h2>
+        <div class="adder">
+          <input id="blockersInput" type="text" placeholder="Any blockers?" />
+          <select id="blockersPriority">
+            <option value="Low">🟢 Low</option>
+            <option value="Medium" selected>🟠 Medium</option>
+            <option value="High">🔴 High</option>
+          </select>
+          <button class="primary" id="addBlockers">Add</button>
+        </div>
+        <ul id="blockersList" class="list"></ul>
+      </div>
+    </section>
+
+    <section class="actions">
+      <button id="copyBtn" class="secondary">Copy to Clipboard</button>
+      <button id="exportBtn" class="primary">Export to Excel</button>
+      <button id="clearBtn" class="ghost">Clear Day</button>
+    </section>
+
+    <footer>
+      <small>Saved locally. Switch date to view/edit other days.</small>
+    </footer>
+  </div>
+
+  <!-- SheetJS for Excel export -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
